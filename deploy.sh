@@ -3,7 +3,7 @@
 # Configuration
 # Google Cloud usernames from email are often formatted like this: user_gmail_com
 SERVER_IP="uaecodes.com"
-SSH_USER="faztrick" # Adjust if your actual SSH username is different (e.g., faztrick_gmail_com)
+SSH_USER="faztrick_gmail_com" # Adjusted based on provided email
 REMOTE_DIR="/var/www/educore"
 
 echo "🚀 Starting deployment to $SERVER_IP..."
