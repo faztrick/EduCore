@@ -129,3 +129,7 @@ dist-ssr/
 *.njsproj
 *.sln
 *.sw?
+
+# Google Cloud SDK
+google-cloud-sdk/
+google-cloud-cli-*.tar.gz

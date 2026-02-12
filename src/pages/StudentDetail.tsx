@@ -186,12 +186,20 @@ function InlineObservationForm({
                         accept="image/*"
                         id="form-img"
                         className="hidden"
-                        onChange={(e) => {
+                        onChange={async (e) => {
                           const file = e.target.files?.[0];
                           if (!file) return;
-                          const reader = new FileReader();
-                          reader.onloadend = () => update('imageUrl', reader.result as string);
-                          reader.readAsDataURL(file);
+                          const formData = new FormData();
+                          formData.append('image', file);
+                          try {
+                            const res = await fetch('/api/upload', { method: 'POST', body: formData });
+                            const data = await res.json();
+                            if (data.url) update('imageUrl', data.url);
+                          } catch {
+                            const reader = new FileReader();
+                            reader.onloadend = () => update('imageUrl', reader.result as string);
+                            reader.readAsDataURL(file);
+                          }
                         }}
                       />
                       {form.imageUrl ? (
